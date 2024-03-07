@@ -1,0 +1,17 @@
+
+sudo su
+
+yum update -y
+
+yum install -y httpd
+cd /var/www/html
+wget https://my-mole-bucket.s3.amazonaws.com/mole.zip
+
+unzip mole.zip
+
+cp -r mole-main/* /var/www/html
+
+rm -rf mole-main mole.zip
+
+systemctl enable httpd
+systemctl start httpd
